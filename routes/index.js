@@ -5,6 +5,7 @@ import PhoneController from '../controllers/phone';
 const router = Router();
 
 router.get('/phones', PhoneController.getAll);
+router.get('/phones/:id', PhoneController.get);
 router.put('/phones/:id', PhoneController.update);
 router.post('/phones', PhoneController.create);
 router.delete('/phones/:id', PhoneController.delete);

@@ -1,5 +1,6 @@
 import moment from 'moment';
 import uuid from 'uuid';
+import parser from './../util'
 
 class Phone {
 
@@ -7,13 +8,13 @@ class Phone {
         this.phones = [];
     }
 
-    create(data) {
+    create(data, metadata) {
         const phone = {
             id: uuid.v4(), 
             type: data.type || '',
             serial: data.serial || '',
             color: data.color || '',
-            metadata: data.metadata || '', 
+            metadata: metadata, 
             created: moment.now(),
             updated: moment.now()
         };
@@ -30,14 +31,14 @@ class Phone {
         return this.phones;
     }
 
-    update(id, data) {
+    update(id, data, metadata) {
         const phone = this.findOne(id);
         const index = this.phones.indexOf(phone);
-
+        
         this.phones[index].type = data.type || phone.type;
         this.phones[index].serial = data.serial || phone.serial;
         this.phones[index].color = data.color || phone.color;
-        this.phones[index].metadata = data.metadata || phone.metadata;
+        this.phones[index].metadata = metadata;
         this.phones[index].updated = moment.now();
 
         return this.phones[index];
