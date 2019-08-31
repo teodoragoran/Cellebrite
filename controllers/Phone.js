@@ -12,7 +12,7 @@ const Phone = {
                     return res.status(400).send({'message': 'Unprocessable entity'})
             }    
             const phone = await PhoneModel.create(req.body, metadata);
-            res.status(201).send(phone);
+            return res.status(201).send(phone);
         } catch (error) {
             next(error)
         } 
@@ -21,7 +21,7 @@ const Phone = {
     async getAll(req, res, next) {
         try {
             const phones = await PhoneModel.findAll();
-            res.status(200).send(phones);
+            return res.status(200).send(phones);
         } catch (error) {
             next(error);
         }
@@ -52,9 +52,9 @@ const Phone = {
             const id = req.params.id;
             const phone = await PhoneModel.findOne(id);
             if (!phone)
-                res.status(404).send({'message': 'Phone not found'})
+                return res.status(404).send({'message': 'Phone not found'})
             const deletedPhone = await PhoneModel.delete(id);
-            res.status(204).send(deletedPhone)
+            return res.status(204).send(deletedPhone)
             
         } catch (error) {
             next(error)
@@ -66,8 +66,8 @@ const Phone = {
             const id = req.params.id;
             const phone = await PhoneModel.findOne(id);
             if (!phone)
-                res.status(404).send({'message': 'Phone not found'})
-            res.status(200).send(phone)
+                return res.status(404).send({'message': 'Phone not found'})
+            return res.status(200).send(phone)
 
         } catch (error) {
             next(error)

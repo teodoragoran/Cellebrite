@@ -1,6 +1,5 @@
 import moment from 'moment';
 import uuid from 'uuid';
-import parser from './../util'
 
 class Phone {
 
@@ -34,7 +33,7 @@ class Phone {
     update(id, data, metadata) {
         const phone = this.findOne(id);
         const index = this.phones.indexOf(phone);
-        
+
         this.phones[index].type = data.type || phone.type;
         this.phones[index].serial = data.serial || phone.serial;
         this.phones[index].color = data.color || phone.color;

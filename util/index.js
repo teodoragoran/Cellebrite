@@ -1,7 +1,6 @@
-import objectHash from 'object-hash';
 import simpleEncryptor from 'simple-encryptor';
 
-const key = 'real secret keys should be long and random';
+const key = 'ere218b563eb48c0979ff95e6b';
 const encryptor = simpleEncryptor(key);
 
 export function hash(data) {
